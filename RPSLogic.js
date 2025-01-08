@@ -20,6 +20,7 @@ function getHumanChoice() {
     if (humanChoice.toLowerCase() != "rock" && humanChoice.toLowerCase() != "scissor"
         && humanChoice.toLowerCase() != "paper") {
             return "Invalid input";
+    
     } else {
         return humanChoice.toLowerCase();
     }
@@ -66,7 +67,7 @@ function playRound(humanChoice, compChoice) {
         console.log("Invalid input. Choose rock, paper, or scissor.");
     }
 }
-
+/*
 // Play the entire game
 function playGame() {
     for (let i = 0; i < 5; i++) {
@@ -81,4 +82,44 @@ function playGame() {
         }
     }
 }
+*/
+
+// Create three buttons (rock, paper, scissor)
+// Add event listener to the buttons that call playRound function
+const buttonDiv = document.querySelector("#buttons");
+
+const rockButton = document.createElement("button");
+rockButton.textContent = "Rock";
+
+const paperButton = document.createElement("button");
+paperButton.textContent = "Paper";
+
+const scissorButton = document.createElement("button");
+scissorButton.textContent = "Scissor";
+
+// Results
+const res = document.createElement("div");
+
+buttonDiv.appendChild(rockButton);
+buttonDiv.appendChild(paperButton);
+buttonDiv.appendChild(scissorButton);
+
+rockButton.addEventListener("click", () => {
+    const computerChoice = getComputerChoice();
+    playRound("rock", computerChoice);
+    res.textContent = "Your score: " + humanScore + " Computer Score: " + computerScore;
+    res.textContent = '';
+});
+
+paperButton.addEventListener("click", () => {
+    const computerChoice = getComputerChoice();
+    playRound("paper", computerChoice);
+});
+
+scissorButton.addEventListener("click", () => {
+    const computerChoice = getComputerChoice();
+    playRound("scissor", computerChoice);
+});
+
+
 
